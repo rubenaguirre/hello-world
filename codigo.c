@@ -3,12 +3,13 @@
 #use delay(clock=4M)
 
 void main(){
-    x=0;
+    int x=0;
     while(true){
         if(x==0){
             x++;
         }
         if(x>10){
+            output_b(x);
             x=0;
         }
     }
