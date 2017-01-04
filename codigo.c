@@ -9,8 +9,8 @@ void main(){
             x++;
         }
         if(x>10){
-            output_b(x);
             x=0;
+            output_b(x);
         }
     }
 }
