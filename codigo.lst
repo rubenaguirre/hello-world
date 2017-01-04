@@ -1,0 +1,63 @@
+CCS PCH C Compiler, Version 4.106, 31743               03-ene.-17 19:54
+
+               Filename: C:\Users\Ruben\Desktop\github\hello-world\codigo.lst
+
+               ROM used: 50 bytes (0%)
+                         Largest free fragment is 32718
+               RAM used: 5 (0%) at main() level
+                         5 (0%) worst case
+               Stack:    0 locations
+
+*
+0000:  GOTO   0004
+.................... #include <18f4550.h> 
+.................... //////// Standard Header file for the PIC18F4550 device //////////////// 
+.................... #device PIC18F4550 
+.................... #list 
+....................  
+.................... #fuses XT,NOWDT,NOLVP 
+.................... #use delay(clock=4M) 
+....................  
+.................... void main(){ 
+0004:  CLRF   FF8
+0006:  BCF    FD0.7
+0008:  CLRF   FEA
+000A:  CLRF   FE9
+000C:  MOVF   FC1,W
+000E:  ANDLW  C0
+0010:  IORLW  0F
+0012:  MOVWF  FC1
+0014:  MOVLW  07
+0016:  MOVWF  FB4
+0018:  CLRF   05
+....................     int x=0; 
+....................     while(true){ 
+....................         if(x==0){ 
+001A:  MOVF   05,F
+001C:  BNZ   0020
+....................             x++; 
+001E:  INCF   05,F
+....................         } 
+....................         if(x>10){ 
+0020:  MOVF   05,W
+0022:  SUBLW  0A
+0024:  BC    002E
+....................             output_b(x); 
+0026:  CLRF   F93
+0028:  MOVFF  05,F8A
+....................             x=0; 
+002C:  CLRF   05
+....................         } 
+....................     } 
+002E:  BRA    001A
+.................... } 
+0030:  SLEEP 
+
+Configuration Fuses:
+   Word  1: C03F   XT IESO FCMEN PLL12 CPUDIV4 USBDIV
+   Word  2: 1E3E   BROWNOUT NOWDT BORV20 PUT WDT32768 VREGEN
+   Word  3: 8700   PBADEN CCP2C1 MCLR LPT1OSC
+   Word  4: 0081   STVREN NODEBUG NOLVP NOXINST NOICPRT
+   Word  5: C00F   NOPROTECT NOCPD NOCPB
+   Word  6: E00F   NOWRT NOWRTD NOWRTC NOWRTB
+   Word  7: 400F   NOEBTR NOEBTRB
